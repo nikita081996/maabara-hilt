@@ -1,0 +1,2 @@
+rootProject.name='Scan Android'
+include ':app'

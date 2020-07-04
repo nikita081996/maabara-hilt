@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.covidkanzidata.utility.Validation" />
+
+        <variable
+            name="data"
+            type="com.covidkanzidata.dashboard.model.details.Data" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/test_result"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/dimen24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/data_cl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen15dp"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen5dp"
+                    android:text="@string/driver_name"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/dimen18sp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_name_val"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_name_val"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen15dp"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen5dp"
+                    android:text="@{data.fieldData.testsBOOKINGCName !=null ? data.fieldData.testsBOOKINGCName : ``}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/dimen18sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_name" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/name_barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="tv_name, tv_name_val" />
+
+
+                <TextView
+                    android:id="@+id/tv_license"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen15dp"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen5dp"
+                    android:text="@string/license_number"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/dimen18sp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_name_val"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name_barrier" />
+
+                <TextView
+                    android:id="@+id/tv_license_val"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen15dp"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen5dp"
+                    android:text="@{data.fieldData.testsBOOKINGAdditionalField14 !=null ? data.fieldData.testsBOOKINGAdditionalField14 : ``}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/dimen18sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_license"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_license" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/license_barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="tv_license, tv_license_val" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen15dp"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen5dp"
+                    android:text="@string/date"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/dimen18sp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_date_val"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/license_barrier" />
+
+                <TextView
+                    android:id="@+id/tv_date_val"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen15dp"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen5dp"
+                    android:text="@{data.fieldData.testDate !=null ? Validation.getDate(data.fieldData.testDate) : ``}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/dimen18sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_date" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen15dp"
+                android:gravity="center"
+                android:text="@string/no_result_found"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/dimen24sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/tv_result_2"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/data_cl" />
+
+            <TextView
+                android:id="@+id/tv_result_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen15dp"
+                android:background="@drawable/tv_border"
+                android:backgroundTint="@color/colorGreen"
+                android:gravity="center"
+                android:padding="@dimen/dimen15dp"
+                android:text="@string/negative"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/dimen30sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/tv_validity"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_result" />
+
+
+            <TextView
+                android:id="@+id/tv_validity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen15dp"
+                android:gravity="center"
+                android:text="@{data.fieldData.ValidUpto != null &amp;&amp; data.fieldData.ValidUpto != `` ? Validation.getValidity2(data.fieldData.ValidUpto) : Validation.getValidity(data.fieldData.TestDate)}"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/dimen18sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/btn_start_again"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_start" />
+
+            <Button
+                android:id="@+id/btn_start_again"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen15dp"
+                android:background="@color/colorPrimary"
+                android:padding="@dimen/dimen20dp"
+                android:text="@string/start_again"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/dimen18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_start" />
+
+            <!--<androidx.constraintlayout.widget.Group
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="data_cl,tv_result_2" />-->
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.01" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.99" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.01" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.99" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
